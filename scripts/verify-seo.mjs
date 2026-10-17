@@ -123,7 +123,29 @@ try {
 }
 check("no stale app/favicon.ico override", !existsSync(join(root, "src/app/favicon.ico")));
 
-// 7. Unknown routes get a real 404 page that is not indexable.
+// 7. Former localized homepages redirect permanently to the canonical root.
+const routesManifest = JSON.parse(readFileSync(join(root, ".next", "routes-manifest.json"), "utf8"));
+const redirects = routesManifest.redirects ?? [];
+for (const source of ["/fa", "/en"]) {
+  const rule = redirects.find((r) => r.source === source);
+  check(
+    `permanent redirect ${source} → /`,
+    Boolean(rule) &&
+      rule.destination === "/" &&
+      (rule.permanent === true || rule.statusCode === 308) &&
+      /\(\?:\/\)\?\$/.test(rule.regex ?? ""),
+    JSON.stringify(rule ?? null),
+  );
+}
+// `/:path+/` is Next.js's own trailing-slash normalization route; every other
+// redirect must be an exact path so unrelated URLs still 404 genuinely.
+const customRedirects = redirects.filter((r) => r.source !== "/:path+/");
+check(
+  "no wildcard or catch-all redirects",
+  !customRedirects.some((r) => r.source.includes("*") || r.source.includes(":")),
+  JSON.stringify(customRedirects.map((r) => r.source)));
+
+// 8. Unknown routes get a real 404 page that is not indexable.
 const notFoundPath = join(serverApp, "_not-found.html");
 if (existsSync(notFoundPath)) {
   const nf = readFileSync(notFoundPath, "utf8");
