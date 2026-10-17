@@ -73,13 +73,31 @@ redeploying — no code change is needed.
 
 Copy `.env.example` to `.env.local` for local settings. Never commit secrets.
 
+## Canonical origin and indexing policy
+
+The canonical production origin is the validated `SITE_URL` when set,
+otherwise the known production domain `https://moorxe.com` — production never
+ships without a canonical, Open Graph URLs, and a single-entry sitemap.
+`SITE_URL` must be an `https:` origin; credentials, localhost, `*.vercel.app`,
+and example hosts are rejected and fall back to the default.
+
+Indexing is decided separately from the origin. Only the production
+deployment is indexable: on Vercel that means `VERCEL_ENV=production`; off
+Vercel it means an explicitly configured `SITE_URL`. Previews and local
+development reference the same production canonical but emit an effective
+`noindex` (robots.txt still allows fetching so crawlers see the directive).
+
+Verify either scenario after a build:
+
+```sh
+npm run build -- --webpack && npm run verify:seo -- --expect-noindex
+VERCEL_ENV=production npm run build -- --webpack && npm run verify:seo -- --expect-index
+```
+
 ## Production configuration still needed
 
-1. `SITE_URL` — canonical production origin (e.g. `https://moorxe.com`).
-   Until set, the site emits no canonical URL, no absolute Open Graph URLs,
-   and an empty sitemap, so previews are never indexed as production.
-2. Contact sink — see above.
-3. Social links — `NEXT_PUBLIC_X_URL`, `NEXT_PUBLIC_INSTAGRAM_URL`,
+1. Contact sink — see above.
+2. Social links — `NEXT_PUBLIC_X_URL`, `NEXT_PUBLIC_INSTAGRAM_URL`,
    `NEXT_PUBLIC_YOUTUBE_URL`. Only valid `https:` URLs render; missing ones
    leave the footer clean with no dead buttons.
 

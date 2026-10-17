@@ -2,15 +2,8 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  // `/` is the only public content URL, and it is listed only once the real
-  // production origin is configured via SITE_URL.
-  if (!siteConfig.url) return [];
-  return [
-    {
-      url: `${siteConfig.url}/`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-  ];
+  // `/` is the only public content URL. `lastModified`, `changeFrequency`,
+  // and `priority` are intentionally omitted: Google ignores the latter two,
+  // and there is currently no honest per-change update source for the former.
+  return [{ url: `${siteConfig.url}/` }];
 }

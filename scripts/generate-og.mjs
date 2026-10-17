@@ -50,13 +50,60 @@ for (let s = 0; s < 34; s++) {
     dot(x, y + 1, bright * 0.25);
   }
 }
-// Concentric ring mark at center.
-for (const [r, v] of [[96, 0.9], [140, 0.4]]) {
-  for (let a = 0; a < Math.PI * 2; a += 0.002) {
-    dot(W / 2 + Math.cos(a) * r, H / 2 + Math.sin(a) * r * 0.62, v * 0.5);
+// Real Moorxe logo mark at center: ring plus the block glyph from
+// public/moorxe-logo-white.svg (same 0.85 inner spacing), scanline-filled.
+const LOGO_VERTICES = [
+  [14.05, 8.45], [17.95, 8.45], [17.95, 9.85], [21.4, 9.85], [21.4, 12],
+  [25, 12], [25, 14.95], [26, 14.95], [26, 22.5], [24.55, 22.5],
+  [24.55, 20.9], [23.1, 20.9], [23.1, 22.5], [21.65, 22.5], [21.65, 16.9],
+  [17.95, 16.9], [17.95, 22.5], [14.05, 22.5], [14.05, 16.9], [10.35, 16.9],
+  [10.35, 22.5], [8.9, 22.5], [8.9, 20.9], [7.45, 20.9], [7.45, 22.5],
+  [6, 22.5], [6, 14.95], [7, 14.95], [7, 12], [10.6, 12], [10.6, 9.85],
+  [14.05, 9.85],
+];
+const LOGO_SCALE = 11; // svg units -> px (352px mark)
+const LOGO_GAP = 0.85; // matches the svg inner spacing
+const logoPt = ([x, y]) => [
+  W / 2 + (x - 16) * LOGO_GAP * LOGO_SCALE,
+  H / 2 + (y - 16) * LOGO_GAP * LOGO_SCALE,
+];
+const logoPoly = LOGO_VERTICES.map(logoPt);
+const logoXs = logoPoly.map(([x]) => x);
+const logoYs = logoPoly.map(([, y]) => y);
+const lx0 = Math.floor(Math.min(...logoXs));
+const lx1 = Math.ceil(Math.max(...logoXs));
+const ly0 = Math.floor(Math.min(...logoYs));
+const ly1 = Math.ceil(Math.max(...logoYs));
+// 2x2 supersampled even-odd scanline fill.
+for (let y = ly0; y < ly1; y++) {
+  for (let x = lx0; x < lx1; x++) {
+    let inside = 0;
+    for (let s = 0; s < 4; s++) {
+      const sx = x + (s % 2 ? 0.75 : 0.25);
+      const sy = y + (s < 2 ? 0.25 : 0.75);
+      let crossings = 0;
+      for (let i = 0; i < logoPoly.length; i++) {
+        const [ax, ay] = logoPoly[i];
+        const [bx, by] = logoPoly[(i + 1) % logoPoly.length];
+        if ((ay > sy) !== (by > sy)) {
+          const ix = ax + ((sy - ay) / (by - ay)) * (bx - ax);
+          if (ix > sx) crossings++;
+        }
+      }
+      if (crossings % 2 === 1) inside++;
+    }
+    if (inside > 0) dot(x, y, (inside / 4) * 0.95);
   }
 }
-dot(W / 2, H / 2, 1);
+// Ring outline around the glyph: a crisp narrow stroke, not a soft band.
+{
+  const r = 13 * LOGO_SCALE;
+  for (let a = 0; a < Math.PI * 2; a += 0.0008) {
+    for (const o of [-2, 0, 2]) {
+      dot(W / 2 + Math.cos(a) * (r + o), H / 2 + Math.sin(a) * (r + o), 0.9);
+    }
+  }
+}
 
 // Encode truecolor PNG.
 const stride = W * 3 + 1;
