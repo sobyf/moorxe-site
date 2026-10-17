@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-panel: var(--panel);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-ring: var(--ring);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+    Consolas, monospace;
+  --radius-lg: 1.25rem;
+  --radius-xl: 1.5rem;
+}
+
+:root {
+  --background: #050505;
+  --foreground: #f1f1ef;
+  --muted: #131314;
+  --muted-foreground: #a6a6a2;
+  --panel: rgba(16, 16, 17, 0.72);
+  --border: rgba(241, 241, 239, 0.12);
+  --input: rgba(241, 241, 239, 0.16);
+  --primary: #f1f1ef;
+  --primary-foreground: #050505;
+  --secondary: #1a1a1b;
+  --secondary-foreground: #f1f1ef;
+  --accent: #232324;
+  --accent-foreground: #f1f1ef;
+  --ring: rgba(241, 241, 239, 0.45);
+  /* Monochrome notice tones: no chromatic success/error colors. */
+  --destructive: #f1f1ef;
+  --destructive-foreground: #050505;
+  color-scheme: dark;
+}
+
+html {
+  scroll-padding-top: 5.5rem;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+    Consolas, monospace;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: #f1f1ef;
+  color: #050505;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Elegant monochrome underline for text inputs. */
+.field-underline {
+  border-bottom: 1px solid var(--input);
+  transition: border-color 0.25s ease;
+}
+
+.field-underline:focus-within {
+  border-bottom-color: var(--foreground);
+}
+
+/* Subtle dot texture for cards. */
+.dot-grid {
+  background-image: radial-gradient(
+    rgba(241, 241, 239, 0.09) 1px,
+    transparent 1px
+  );
+  background-size: 14px 14px;
+}
+
+/* Static strand fallback pattern when WebGL is unavailable. */
+.strand-fallback {
+  background-image:
+    radial-gradient(ellipse 60% 45% at 70% 20%, rgba(241, 241, 239, 0.07), transparent 70%),
+    radial-gradient(ellipse 50% 40% at 30% 60%, rgba(241, 241, 239, 0.05), transparent 70%),
+    repeating-linear-gradient(
+      115deg,
+      transparent 0px,
+      transparent 22px,
+      rgba(241, 241, 239, 0.035) 23px,
+      transparent 24px
+    );
+}
+
+/* Gentle hub pulse, synchronized with the background rhythm. */
+@keyframes hub-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 60px rgba(241, 241, 239, 0.06);
+  }
+  50% {
+    box-shadow: 0 0 100px rgba(241, 241, 239, 0.12);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .motion-loop.hub-pulse {
+    animation: hub-pulse 5s ease-in-out infinite;
+  }
+}
+
+/* The Pause-motion control freezes looping decorative effects too. */
+[data-motion-paused="true"] .motion-loop {
+  animation-play-state: paused;
+}
+
+/* Thin scrollbar that stays in the monochrome system. */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #050505;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2c;
+  border-radius: 8px;
+  border: 2px solid #050505;
+}
+
+/* Autofill stays monochrome. */
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 60px #101011 inset;
+  -webkit-text-fill-color: #f1f1ef;
+  caret-color: #f1f1ef;
+}

@@ -1,0 +1,23 @@
+# Dependencies
+/node_modules
+
+# Next.js
+/.next/
+/out/
+
+# Local dev contact submissions (outside public/, never committed)
+/.data/
+
+# Env secrets
+.env
+.env*.local
+
+# OS / editor
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+
+# TypeScript build info
+tsconfig.tsbuildinfo
