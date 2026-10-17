@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -10,18 +11,29 @@ const NAV_ITEMS = [
   { label: "Contact", href: "#contact" },
 ];
 
-export function StrandMark({ className }: { className?: string }) {
+/**
+ * Moorxe brand mark. The artwork is white on transparency, so it always
+ * renders against the site's dark background. Every current use sits beside
+ * visible "Moorxe" text, so the image is decorative and the enclosing link
+ * carries the accessible name.
+ */
+export function MoorxeLogo({
+  className,
+  priority = false,
+}: {
+  className?: string;
+  priority?: boolean;
+}) {
   return (
-    <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" className={className}>
-      <circle cx="16" cy="16" r="13" stroke="currentColor" strokeWidth="1.5" />
-      <path
-        d="M5 19c4-1 6-6 10-6s5 5 9 3 3-4 3-4M5 13c5 1 7 7 11 7s5-5 8-4"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-      />
-      <circle cx="16" cy="16" r="2.5" fill="currentColor" />
-    </svg>
+    <Image
+      src="/moorxe-logo-white.svg"
+      alt=""
+      aria-hidden="true"
+      width={32}
+      height={32}
+      priority={priority}
+      className={className}
+    />
   );
 }
 
@@ -67,7 +79,7 @@ export function SiteHeader() {
           className="flex items-center gap-2.5 text-foreground"
           aria-label="Moorxe — back to top"
         >
-          <StrandMark className="h-7 w-7" />
+          <MoorxeLogo className="h-8 w-8" priority />
           <span className="font-mono text-lg font-semibold tracking-tight">Moorxe</span>
         </a>
 

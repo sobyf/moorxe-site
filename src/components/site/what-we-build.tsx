@@ -1,6 +1,6 @@
 import { Bot, Package, Wrench, ListChecks } from "lucide-react";
 import { Eyebrow, Reveal } from "@/components/motion/reveal";
-import { StrandMark } from "@/components/site/header";
+import { MoorxeLogo } from "@/components/site/header";
 
 const ITEMS = [
   {
@@ -95,7 +95,7 @@ export function WhatWeBuild() {
             className="col-start-2 row-start-1 row-span-2 justify-self-center"
           >
             <div className="motion-loop hub-pulse flex h-44 w-44 flex-col items-center justify-center gap-2 rounded-full border border-border bg-background/90">
-              <StrandMark className="h-10 w-10 text-foreground" />
+              <MoorxeLogo className="h-10 w-10" />
               <p className="font-mono text-sm font-semibold tracking-tight text-foreground">
                 Moorxe
               </p>
@@ -107,7 +107,7 @@ export function WhatWeBuild() {
       {/* Mobile / tablet: hub above a readable vertical stack. */}
       <div className="mt-12 lg:hidden">
         <div className="mx-auto flex h-32 w-32 flex-col items-center justify-center gap-1.5 rounded-full border border-border bg-background/90">
-          <StrandMark className="h-8 w-8 text-foreground" />
+          <MoorxeLogo className="h-8 w-8" />
           <p className="font-mono text-[13px] font-semibold text-foreground">Moorxe</p>
         </div>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">

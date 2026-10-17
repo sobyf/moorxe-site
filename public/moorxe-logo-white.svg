@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" color="#fff" role="img" aria-labelledby="moorxe-logo-title">
+  <title id="moorxe-logo-title">Moorxe</title>
+  <circle cx="16" cy="16" r="13" stroke="#fff" stroke-width="1.5"/>
+  <path fill="#fff" transform="translate(16 16) scale(0.85) translate(-16 -16)" d="M14.05 8.45H17.95V9.85H21.4V12H25V14.95H26V22.5H24.55V20.9H23.1V22.5H21.65V16.9H17.95V22.5H14.05V16.9H10.35V22.5H8.9V20.9H7.45V22.5H6V14.95H7V12H10.6V9.85H14.05Z"/>
+</svg>

@@ -1,6 +1,6 @@
 import { ArrowUp, Instagram, Twitter, Youtube } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
-import { StrandMark } from "@/components/site/header";
+import { MoorxeLogo } from "@/components/site/header";
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -14,7 +14,7 @@ export function SiteFooter() {
     <footer className="relative border-t border-border">
       <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-6 px-5 py-14 text-center sm:px-8">
         <a href="#top" className="flex items-center gap-2.5" aria-label="Moorxe — back to top">
-          <StrandMark className="h-8 w-8 text-foreground" />
+          <MoorxeLogo className="h-8 w-8" />
           <span className="font-mono text-xl font-semibold tracking-tight text-foreground">
             Moorxe
           </span>
