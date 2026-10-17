@@ -1,31 +1,31 @@
-import { Bot, Workflow, LibraryBig, ListChecks } from "lucide-react";
+import { Bot, Package, Wrench, ListChecks } from "lucide-react";
 import { Eyebrow, Reveal } from "@/components/motion/reveal";
 import { StrandMark } from "@/components/site/header";
 
 const ITEMS = [
   {
+    icon: Package,
+    title: "Moorxe Products",
+    description:
+      "AI products and tools we develop and offer under the Moorxe name.",
+  },
+  {
+    icon: Wrench,
+    title: "Custom Solutions",
+    description:
+      "Purpose-built AI tools and products tailored to your tasks, requirements, and existing systems.",
+  },
+  {
     icon: Bot,
     title: "Specialized Assistants",
     description:
-      "Support for specific tasks, informed by relevant knowledge and clear working methods.",
-  },
-  {
-    icon: Workflow,
-    title: "Workflow Tools",
-    description:
-      "Tools that connect your inputs, AI models, and existing systems to get work done.",
-  },
-  {
-    icon: LibraryBig,
-    title: "Knowledge Systems",
-    description:
-      "Relevant information, organized so AI can use it in the right context.",
+      "Focused assistance shaped by relevant knowledge and clear working methods.",
   },
   {
     icon: ListChecks,
-    title: "Quality Checks",
+    title: "Workflow & Quality",
     description:
-      "Review steps that help assess whether an output is accurate, relevant, and ready to use.",
+      "Processes that connect inputs, tools, and review steps to produce useful results.",
   },
 ];
 
@@ -45,13 +45,13 @@ export function WhatWeBuild() {
             id="what-we-build-heading"
             className="mt-5 font-mono text-3xl font-semibold tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl"
           >
-            From AI capability to everyday usefulness.
+            Our products. Your possibilities.
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
           <p className="mt-5 font-mono text-base leading-relaxed text-muted-foreground">
-            Tools, assistants, and workflows built around the work you need to
-            get done.
+            From Moorxe&rsquo;s own tools to solutions built around your needs,
+            we make specialized AI easier to use.
           </p>
         </Reveal>
       </div>

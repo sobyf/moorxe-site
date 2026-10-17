@@ -1,4 +1,4 @@
-# Moorxe — AI That Fits the Way You Work
+# Moorxe — AI Products & Custom Solutions
 
 Single-page marketing homepage for Moorxe. Dark monochrome design, one
 continuous Three.js strand background, GSAP section reveals, and a real

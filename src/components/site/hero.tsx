@@ -36,7 +36,7 @@ export function Hero() {
     >
       <div className="max-w-3xl">
         <p data-hero="eyebrow" className="font-mono text-xs font-medium tracking-[0.28em] text-muted-foreground uppercase">
-          Human intent. Useful AI.
+          AI products. Custom solutions.
         </p>
         <h1
           id="hero-heading"
@@ -44,34 +44,35 @@ export function Hero() {
         >
           <span className="block overflow-hidden pb-1">
             <span data-hero="line" className="block">
-              AI that fits
+              AI tools for your work.
             </span>
           </span>
           <span className="block overflow-hidden pb-1">
             <span data-hero="line" className="block text-muted-foreground">
-              the way you work.
+              Built by Moorxe.
             </span>
           </span>
         </h1>
         <p data-hero="support" className="mt-6 max-w-xl font-mono text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Moorxe builds tools and specialized assistants that turn your needs
-          into practical AI workflows — with the knowledge, tools, and quality
-          checks your work requires.
+          We build our own AI products and tools — and create custom
+          solutions for people and businesses with specific needs. Relevant
+          knowledge, thoughtful workflows, and quality checks bring it all
+          together.
         </p>
         <div data-hero="actions" className="mt-9 flex flex-wrap items-center gap-3">
           <a
-            href="#contact"
+            href="#what-we-build"
             className="group inline-flex h-12 items-center gap-2 rounded-full bg-primary px-7 font-mono text-sm font-medium text-primary-foreground transition-colors duration-200 hover:bg-transparent hover:text-foreground hover:shadow-[inset_0_0_0_1px_rgba(241,241,239,0.45)]"
           >
-            Discuss Your Workflow
-            <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
+            Explore What We Build
+            <ArrowDown className="h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5" aria-hidden="true" />
           </a>
           <a
-            href="#approach"
+            href="#contact"
             className="group inline-flex h-12 items-center gap-2 rounded-full border border-input px-7 font-mono text-sm font-medium text-foreground transition-colors duration-200 hover:border-primary hover:bg-primary hover:text-primary-foreground"
           >
-            Explore Our Approach
-            <ArrowDown className="h-4 w-4 transition-transform duration-200 group-hover:translate-y-0.5" aria-hidden="true" />
+            Discuss a Custom Solution
+            <ArrowUpRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
           </a>
         </div>
         <p data-hero="note" className="mt-8 font-mono text-[13px] tracking-wide text-muted-foreground">

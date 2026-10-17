@@ -46,10 +46,10 @@ function resolveSocialUrl(value: string | undefined): string | null {
 
 export const siteConfig = {
   name: "Moorxe",
-  tagline: "Specialized AI, made useful.",
-  title: "Moorxe — AI That Fits the Way You Work",
+  tagline: "AI products and custom solutions.",
+  title: "Moorxe — AI Products & Custom Solutions",
   description:
-    "Moorxe builds specialized AI assistants, workflow tools, and knowledge systems that turn professional needs into practical, quality-checked outputs.",
+    "Moorxe builds AI products, specialized tools, and custom solutions that make professional work easier through relevant knowledge, practical workflows, and quality checks.",
   /** Canonical production origin, or null when not configured. */
   url: resolveSiteUrl(),
   socials: {

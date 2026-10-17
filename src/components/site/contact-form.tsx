@@ -97,13 +97,13 @@ export function ContactSection() {
             id="contact-heading"
             className="mt-5 font-mono text-3xl font-semibold tracking-[-0.02em] text-foreground sm:text-4xl"
           >
-            What would you like AI to help you do?
+            Interested in our tools — or need something custom?
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
           <p className="mt-5 font-mono text-base leading-relaxed text-muted-foreground">
-            Tell us about a task that takes too much effort — or an AI output
-            that still needs too much fixing.
+            Ask about Moorxe products, share feedback, or tell us about an
+            AI tool you&rsquo;d like us to build.
           </p>
         </Reveal>
 
@@ -172,13 +172,13 @@ export function ContactSection() {
                   </div>
 
                   <div>
-                    <Label htmlFor="contact-message">What are you trying to accomplish?</Label>
+                    <Label htmlFor="contact-message">How can we help?</Label>
                     <div className="field-underline mt-1">
                       <Textarea
                         id="contact-message"
                         name="message"
                         rows={5}
-                        placeholder="Describe your task, current process, and the result you need."
+                        placeholder="Tell us which product interests you, or describe the custom tool or solution you need."
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         aria-invalid={Boolean(fieldErrors.message)}

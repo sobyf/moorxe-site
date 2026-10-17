@@ -66,22 +66,22 @@ function EvaluateVisual() {
 const CARDS = [
   {
     step: "01",
-    title: "Understand the Task",
-    description: "Define the outcome, the context, and what a useful result looks like.",
+    title: "Understand the Need",
+    description: "Identify the task, the context, and what a useful outcome looks like.",
     Visual: UnderstandVisual,
   },
   {
     step: "02",
-    title: "Build the Workflow",
+    title: "Build the Right Solution",
     description:
-      "Bring together the knowledge, tools, and level of human involvement the task needs.",
+      "Combine relevant knowledge, AI capabilities, and tools into a practical product or workflow.",
     Visual: BuildVisual,
   },
   {
     step: "03",
     title: "Evaluate & Improve",
     description:
-      "Check results against clear criteria and refine the workflow through actual use.",
+      "Check results against clear criteria and refine the solution through actual use.",
     Visual: EvaluateVisual,
   },
 ];
@@ -102,13 +102,13 @@ export function Approach() {
             id="approach-heading"
             className="mt-5 font-mono text-3xl font-semibold tracking-[-0.02em] text-foreground sm:text-4xl lg:text-5xl"
           >
-            Your work comes first.
+            Useful by design.
           </h2>
         </Reveal>
         <Reveal delay={0.16}>
           <p className="mt-5 font-mono text-base leading-relaxed text-muted-foreground">
-            We start with the outcome, build the right process, and evaluate
-            what it delivers.
+            Whether we&rsquo;re developing a Moorxe product or building for a
+            customer, we start with the work and evaluate what we deliver.
           </p>
         </Reveal>
       </div>

@@ -20,7 +20,7 @@ export function SiteFooter() {
           </span>
         </a>
         <p className="font-mono text-sm text-muted-foreground">
-          Specialized AI, made useful.
+          AI products and custom solutions.
         </p>
 
         {socials.length > 0 && (
