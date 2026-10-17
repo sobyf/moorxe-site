@@ -44,6 +44,28 @@ export interface DeliveryReceipt {
   note: string;
 }
 
+/**
+ * Whether this deployment can actually accept a submission right now.
+ *
+ * The contact UI uses this to mark itself unavailable instead of accepting a
+ * message that no sink could store. Server-only: it reads `node:fs`-backed
+ * delivery config, so never import it from a client component.
+ */
+export function canAcceptSubmissions(): boolean {
+  let mode: DeliveryMode | null;
+  try {
+    mode = resolveDeliveryMode();
+  } catch {
+    return false;
+  }
+  if (mode === null) return false;
+  if (mode === "local-file") return process.env.NODE_ENV !== "production";
+  return Boolean(
+    process.env.CONTACT_WEBHOOK_URL?.trim() &&
+      process.env.CONTACT_WEBHOOK_TOKEN?.trim(),
+  );
+}
+
 const LOCAL_FILE_DEV_NOTE = "Saved locally for development.";
 
 /**

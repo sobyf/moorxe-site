@@ -64,6 +64,13 @@ ephemeral multi-instance hosting. Before production, set
 `CONTACT_SINK=webhook` (or wire another durable sink) and confirm the
 unavailable path returns 503 when nothing is configured.
 
+The page resolves delivery availability on the server (`canAcceptSubmissions`
+in `src/lib/contact-delivery.ts`) and renders the contact panel as
+"The contact form is temporarily unavailable" when no sink can receive a
+message, so the site never invites a submission it cannot store. The notice is
+part of the server-rendered HTML. It disappears by configuring a sink and
+redeploying — no code change is needed.
+
 Copy `.env.example` to `.env.local` for local settings. Never commit secrets.
 
 ## Production configuration still needed

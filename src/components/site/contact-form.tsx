@@ -29,7 +29,7 @@ function FieldError({ id, message }: { id: string; message?: string }) {
   );
 }
 
-export function ContactSection() {
+export function ContactSection({ available = true }: { available?: boolean }) {
   const [name, setName] = React.useState("");
   const [email, setEmail] = React.useState("");
   const [message, setMessage] = React.useState("");
@@ -109,7 +109,18 @@ export function ContactSection() {
 
         <Reveal delay={0.22} className="mt-10">
           <div className="rounded-3xl border border-border bg-panel p-7 text-left backdrop-blur-sm sm:p-10">
-            {status === "success" ? (
+            {!available ? (
+              <div role="status" className="py-6 text-center">
+                <CircleAlert className="mx-auto h-9 w-9 text-foreground" aria-hidden="true" />
+                <p className="mt-4 font-mono text-lg font-semibold text-foreground">
+                  The contact form is temporarily unavailable.
+                </p>
+                <p className="mt-2 font-mono text-sm leading-relaxed text-muted-foreground">
+                  We&rsquo;re finishing the setup of our message inbox. Please
+                  check back soon.
+                </p>
+              </div>
+            ) : status === "success" ? (
               <div role="status" className="py-6 text-center">
                 <CircleCheck className="mx-auto h-9 w-9 text-foreground" aria-hidden="true" />
                 <p className="mt-4 font-mono text-lg font-semibold text-foreground">
